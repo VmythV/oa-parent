@@ -33,4 +33,6 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return Result.fail().message(e.getMessage()).code(e.getCode());
     }
+
+
 }
