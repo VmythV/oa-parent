@@ -8,6 +8,13 @@ import com.myth.model.system.SysUser;
  */
 public interface SysUserService extends IService<SysUser> {
     /**
+     * Gets by username.
+     *
+     * @param username the username
+     * @return the by username
+     */
+    SysUser getByUsername(String username);
+    /**
      * Update status.
      *
      * @param id     the id

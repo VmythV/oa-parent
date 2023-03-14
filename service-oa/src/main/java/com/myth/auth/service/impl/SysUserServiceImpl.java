@@ -1,5 +1,6 @@
 package com.myth.auth.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.myth.auth.mapper.SysUserMapper;
 import com.myth.auth.service.SysUserService;
@@ -9,6 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
+
+    @Override
+    public SysUser getByUsername(String username) {
+        return this.getOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getUsername, username));
+    }
 
     @Transactional
     @Override
