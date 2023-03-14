@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.myth.auth.service.SysUserService;
 import com.myth.common.result.Result;
+import com.myth.common.utils.MD5;
 import com.myth.model.system.SysUser;
 import com.myth.vo.system.SysUserQueryVo;
 import io.swagger.annotations.ApiOperation;
@@ -63,6 +64,7 @@ public class SysUserController {
     @ApiOperation(value = "保存用户")
     @PostMapping("save")
     public Result save(@RequestBody SysUser user) {
+        user.setPassword(MD5.encrypt(user.getPassword()));
         service.save(user);
         return Result.ok();
     }
