@@ -3,6 +3,8 @@ server:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 查看日志
+#  mapper-locations: classpath:mapper/*.xml # 在resource中的xml
+  mapper-locations: com.myth.**.*.xml # 在包中的xml
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource

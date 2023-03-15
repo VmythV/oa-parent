@@ -1,6 +1,7 @@
 package com.myth.auth;
 
 import com.myth.auth.mapper.SysRoleMapper;
+import com.myth.common.utils.MD5;
 import com.myth.model.system.SysRole;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -24,4 +25,6 @@ class SysRoleMapperTest {
         List<SysRole> users = sysRoleMapper.selectList(null);
         users.forEach(System.out::println);
     }
+
+
 }

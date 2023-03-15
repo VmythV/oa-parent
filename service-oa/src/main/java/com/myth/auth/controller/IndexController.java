@@ -45,7 +45,7 @@ public class IndexController {
         if (null == sysUser) {
             throw new OaException(201, "用户不存在");
         }
-        if (!Objects.equals(MD5.encrypt(loginVo.getPassword()), loginVo.getPassword())) {
+        if (!Objects.equals(MD5.encrypt(loginVo.getPassword()), sysUser.getPassword())) {
             throw new OaException(201, "密码错误");
         }
         if (sysUser.getStatus() == 0) {
@@ -69,14 +69,14 @@ public class IndexController {
      *
      * @return 用户信息
      */
-    @GetMapping("info")
-    public Result info() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("roles", "[admin]");
-        map.put("name", "admin");
-        map.put("avatar", "https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
-        return Result.ok(map);
-    }
+    //@GetMapping("info")
+    //public Result info() {
+    //    Map<String, Object> map = new HashMap<>();
+    //    map.put("roles", "[admin]");
+    //    map.put("name", "admin");
+    //    map.put("avatar", "https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
+    //    return Result.ok(map);
+    //}
 
     @ApiOperation(value = "获取用户信息")
     @GetMapping("info")
