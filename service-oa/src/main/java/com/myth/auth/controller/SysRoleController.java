@@ -13,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +42,7 @@ public class SysRoleController {
      * @param sysRoleQueryVo 条件对象
      * @return 分页数据
      */
+    @PreAuthorize("hasAuthority('bnt.sysRole.list')")
     @GetMapping("{page}/{limit}")
     @ApiOperation("条件分页查询")
     public Result pageQueryRole(@PathVariable Long page,
@@ -52,6 +54,7 @@ public class SysRoleController {
         return Result.ok(pageModel);
     }
 
+    @PreAuthorize("hasAuthority('bnt.sysRole.list')")
     @GetMapping("get/{id}")
     @ApiOperation(value = "获取")
     public Result get(@PathVariable Long id) {
@@ -60,6 +63,7 @@ public class SysRoleController {
     }
 
 
+    @PreAuthorize("hasAuthority('bnt.sysRole.add')")
     @PostMapping("save")
     @ApiOperation(value = "新增角色")
     public Result save(@RequestBody @Validated SysRole role) {
@@ -67,6 +71,7 @@ public class SysRoleController {
         return isSuccess ? Result.ok() : Result.fail();
     }
 
+    @PreAuthorize("hasAuthority('bnt.sysRole.update')")
     @ApiOperation(value = "修改角色")
     @PutMapping("update")
     public Result updateById(@RequestBody SysRole role) {
@@ -74,6 +79,7 @@ public class SysRoleController {
         return isSuccess ? Result.ok() : Result.fail();
     }
 
+    @PreAuthorize("hasAuthority('bnt.sysRole.remove')")
     @ApiOperation(value = "删除角色")
     @DeleteMapping("remove/{id}")
     public Result remove(@PathVariable Long id) {
@@ -81,6 +87,7 @@ public class SysRoleController {
         return isSuccess ? Result.ok() : Result.fail();
     }
 
+    @PreAuthorize("hasAuthority('bnt.sysRole.remove')")
     @ApiOperation(value = "根据id列表删除")
     @DeleteMapping("batchRemove")
     public Result batchRemove(@RequestBody List<Long> idList) {
